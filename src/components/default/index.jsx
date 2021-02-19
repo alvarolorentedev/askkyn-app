@@ -3,9 +3,9 @@ import { useEffect, useState } from "react"
 import "./index.scss"
 import { Button, Form } from "react-bootstrap"
 
-const DefaultPage = ({ finishedLoading, db, create, join }) => {
-  const [name, setName] = useState(null);
-  const [identifier, setIdentifier] = useState(null);
+const DefaultPage = ({ finishedLoading, create, join }) => {
+  const [name, setName] = useState("");
+  const [identifier, setIdentifier] = useState("");
   useEffect(finishedLoading ,[finishedLoading]);
 
   const onCreate = async () => {
