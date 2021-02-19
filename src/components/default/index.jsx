@@ -1,20 +1,28 @@
 import * as React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import "./index.scss"
-import PouchDB from 'pouchdb';
+import { Button, Form } from "react-bootstrap"
 
-const DefaultPage = ({ finishedLoading }) => {
+const DefaultPage = ({ finishedLoading, db, create, join }) => {
+  const [name, setName] = useState(null);
+  const [identifier, setIdentifier] = useState(null);
   useEffect(finishedLoading ,[finishedLoading]);
-  useEffect(() => {
-    var db = new PouchDB('askkyn');
-    db.info().then(function (info) {
-      console.log(info);
-    })    
-  },[])
 
-  return (<>
-    Welcome to Askkyn
-  </>)
+  const onCreate = async () => {
+      const result = await create()
+      console.log(result)
+  }
+
+  const onJoin = async () => {
+      const result = await join(identifier, name)
+      console.log(result)
+  }
+  return (<div id="container">
+    <Button onClick={onCreate}> Create New</Button>
+    <Form.Control type="text" placeholder="Enter Name" value={ name } onChange={(event) => setName(event.target.value)} />
+    <Form.Control type="text" placeholder="Enter Identifier" value={ identifier } onChange={(event) => setIdentifier(event.target.value)} />
+    <Button onClick={onJoin}> Join </Button>
+  </div>)
 }
 
 export const Default = (props) => <DefaultPage {...props} />;
