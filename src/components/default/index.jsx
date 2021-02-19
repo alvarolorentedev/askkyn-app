@@ -3,19 +3,19 @@ import { useEffect, useState } from "react"
 import "./index.scss"
 import { Button, Form } from "react-bootstrap"
 
-const DefaultPage = ({ finishedLoading, create, join }) => {
+const DefaultPage = ({ navigate, finishedLoading, create, join }) => {
   const [name, setName] = useState("");
   const [identifier, setIdentifier] = useState("");
   useEffect(finishedLoading ,[finishedLoading]);
 
   const onCreate = async () => {
       const result = await create()
-      console.log(result)
+      navigate(`session/${result.identifier}/configuration`)
   }
 
   const onJoin = async () => {
-      const result = await join(identifier, name)
-      console.log(result)
+      await join(identifier, name)
+      navigate(`session/${identifier}/questions`)
   }
   return (<div id="container">
     <Button onClick={onCreate}> Create New</Button>

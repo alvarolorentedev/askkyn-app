@@ -1,9 +1,9 @@
 export const join = async (db, identifier, username) => {
     try {
-        const result = await db.get(identifier)
+        const currentRecord = await db.get(identifier)
+        await db.put({...currentRecord, players: [...currentRecord.players, username]})
         return({
-            success: true,
-            result: result
+            success: true
         })
     } catch (error) {
         return({
