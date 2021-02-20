@@ -34,32 +34,3 @@ body, #main {
     }
   }
 }
-
-.table {
-  thead {
-      th {
-        vertical-align: baseline;
-        .actions {
-          display: flex;
-          justify-content: flex-end;
-          Button {
-            margin-left: $default-spacing;
-            margin-right: $default-spacing;
-          }
-        }
-      }
-  }
-  td {
-      .actions {
-        display: flex;
-        justify-content: flex-end;
-        Button {
-          margin-left: $default-spacing;
-          margin-right: $default-spacing;
-        }
-      }
-      .extra-padding{
-        margin-top: 10px;
-      }
-  }
-}

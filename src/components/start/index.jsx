@@ -20,10 +20,10 @@ const StartPage = ({ navigate, finishedLoading, create, join }) => {
         navigate(`session/${identifier}/answers/${name}`)
   }
   return (<div id="container">
-    <Button onClick={onCreate}> Create New</Button>
-    <Form.Control type="text" placeholder="Enter Name" value={ name } onChange={(event) => setName(event.target.value)} />
-    <Form.Control type="text" placeholder="Enter Identifier" value={ identifier } onChange={(event) => setIdentifier(event.target.value)} />
-    <Button onClick={onJoin}> Join </Button>
+    <Button className="btn-start" onClick={onCreate}> Create New</Button>
+    <Form.Control className="form-control-start" type="text" placeholder="Enter Name" value={ name } onChange={(event) => setName(event.target.value)} />
+    <Form.Control className="form-control-start" type="text" placeholder="Enter Identifier" value={ identifier } onChange={(event) => setIdentifier(event.target.value)} />
+    <Button className="btn-start" onClick={onJoin}> Join </Button>
   </div>)
 }
 
