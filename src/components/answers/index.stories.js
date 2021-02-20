@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { Default } from './index';
+import { Answers } from './index';
 
 export default {
-  title: 'Default/default',
-  component: Default,
+  title: 'Answers/answers',
+  component: Answers,
 };
 
-const Template = (args) => <Default {...args} />;
+const Template = (args) => <Answers {...args} />;
 
 export const defaultView = Template.bind({});
 defaultView.args = {

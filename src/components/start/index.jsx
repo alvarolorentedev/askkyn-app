@@ -3,19 +3,21 @@ import { useEffect, useState } from "react"
 import "./index.scss"
 import { Button, Form } from "react-bootstrap"
 
-const DefaultPage = ({ navigate, finishedLoading, create, join }) => {
+const StartPage = ({ navigate, finishedLoading, create, join }) => {
   const [name, setName] = useState("");
   const [identifier, setIdentifier] = useState("");
   useEffect(finishedLoading ,[finishedLoading]);
 
   const onCreate = async () => {
       const result = await create()
-      navigate(`session/${result.identifier}/configuration`)
+      if (result.success)
+        navigate(`session/${result.identifier}/questionnaire`)
   }
 
   const onJoin = async () => {
-      await join(identifier, name)
-      navigate(`session/${identifier}/questions`)
+      const result = await join(identifier, name)
+      if (result.success)
+        navigate(`session/${identifier}/answers/${name}`)
   }
   return (<div id="container">
     <Button onClick={onCreate}> Create New</Button>
@@ -25,4 +27,4 @@ const DefaultPage = ({ navigate, finishedLoading, create, join }) => {
   </div>)
 }
 
-export const Default = (props) => <DefaultPage {...props} />;
+export const Start = (props) => <StartPage {...props} />;
