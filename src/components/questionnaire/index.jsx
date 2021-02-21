@@ -4,15 +4,16 @@ import "./index.scss"
 import { Button, Table, Form } from "react-bootstrap"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
-const QuestionnairePage = ({ sessionId, finishedLoading }) => {
+const QuestionnairePage = ({ navigate, sessionId, finishedLoading, submit }) => {
   const [questions, setQuestions] = useState([]);
   useEffect(finishedLoading ,[finishedLoading]);
 
-  const addQuestions = () => {
-    setQuestions([...questions, {
-      question: "",
-      answers: [],
-    }])
+  const addQuestions = () => setQuestions([...questions, { question: "", answers: [] }])
+  const submitQuestions = async () => {
+    const result = await submit(sessionId, questions)
+    if(result.success)
+      navigate(`/session/${sessionId}/summary`)
+
   }
   const removeQuestions = (indexToDelete) => setQuestions(questions.filter((_, index) =>  index !== indexToDelete))
   const updateQuestion = (indexToChange, field, value) => 
@@ -52,7 +53,7 @@ const QuestionnairePage = ({ sessionId, finishedLoading }) => {
                 </td>
                 <td>
                   <div className="actions">
-                    <Button onClick={() => updateQuestion(index, "answers", [...question.answers, { value: "" }])}><FontAwesomeIcon icon={['fas', 'plus']} /></Button>
+                    <Button onClick={() => AddAnswer(index)}><FontAwesomeIcon icon={['fas', 'plus']} /></Button>
                     <Button onClick={() => removeQuestions(index)}><FontAwesomeIcon icon={['fas', 'trash']} /></Button>
                   </div>
                 </td>
@@ -60,6 +61,7 @@ const QuestionnairePage = ({ sessionId, finishedLoading }) => {
           }
         </tbody>
     </Table>
+    <Button onClick={submitQuestions}><FontAwesomeIcon icon={['fas', 'play']} /></Button>
   </>)
 }
 

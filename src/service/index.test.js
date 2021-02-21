@@ -1,4 +1,4 @@
-import { db, joinQuestionnaire, createQuestionnaire } from './index'
+import { db, joinQuestionnaire, createQuestionnaire, submitQuestionnaire } from './index'
 describe('index', () => {
     it('should export db', async () => {
         expect(db).toBeTruthy()
@@ -9,5 +9,8 @@ describe('index', () => {
     })
     it('should export createQuestionnaire', async () => {
         expect(createQuestionnaire).toBeTruthy()
+    })
+    it('should export createQuestionnaire', async () => {
+        expect(submitQuestionnaire).toBeTruthy()
     })
 })

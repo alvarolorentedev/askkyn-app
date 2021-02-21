@@ -11,13 +11,13 @@ const StartPage = ({ navigate, finishedLoading, create, join }) => {
   const onCreate = async () => {
       const result = await create()
       if (result.success)
-        navigate(`session/${result.identifier}/questionnaire`)
+        navigate(`/session/${result.identifier}/questionnaire`)
   }
 
   const onJoin = async () => {
       const result = await join(identifier, name)
       if (result.success)
-        navigate(`session/${identifier}/answers/${name}`)
+        navigate(`/session/${identifier}/answers/${name}`)
   }
   return (<div id="container">
     <Button className="btn-start" onClick={onCreate}> Create New</Button>
