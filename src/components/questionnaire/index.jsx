@@ -22,7 +22,7 @@ const QuestionnairePage = ({ navigate, sessionId, finishedLoading, submit }) => 
   const updateAnswer = (indexQuestion, indexAnswer, field, value) => 
     updateQuestion(indexQuestion, "answers", questions[indexQuestion].answers.map((answer, index) => indexAnswer === index ? {...answer, [field]: value } : answer ))
   const AddAnswer = (indexQuestion) => 
-    updateQuestion(indexQuestion, "answers", [...questions[indexQuestion].answers, { value: "" }])
+    updateQuestion(indexQuestion, "answers", [...questions[indexQuestion].answers, { value: "", votes:[] }])
   const removeAnswer = (indexQuestion, indexToDelete) => 
     updateQuestion(indexQuestion, "answers", questions[indexQuestion].answers.filter((_, index) =>  index !== indexToDelete))
 
