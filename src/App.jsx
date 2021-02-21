@@ -12,7 +12,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from "@fortawesome/free-regular-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
-import { createQuestionnaire, joinQuestionnaire, submitQuestionnaire, db } from './service'
+import { createQuestionnaire, joinQuestionnaire, submitQuestionnaire, activateQuestion, db } from './service'
 
 library.add(fab, far, fas)
 
@@ -59,7 +59,7 @@ const App = () => {
    <Router>
      <PublicRoute default path="default" Component={Start} create={createQuestionnaire} join={joinQuestionnaire} />
      <PublicRoute path="session/:sessionId/questionnaire" Component={Questionnaire} db={db} submit={submitQuestionnaire} />
-     <PublicRoute path="session/:sessionId/summary" Component={Summary} db={db} />
+     <PublicRoute path="session/:sessionId/summary" Component={Summary} db={db} activateQuestion={activateQuestion} />
      <PublicRoute path="session/:sessionId/answers/:username" Component={Answers} db={db} />
    </Router>
  </div>)
