@@ -1,23 +1,22 @@
 import * as React from "react"
 import { useEffect, useState } from "react"
 import "./index.scss"
-import { Button, Table, Form } from "react-bootstrap"
+import { Button, Table } from "react-bootstrap"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 
-const SummaryPage = ({ sessionId, finishedLoading, db, activateQuestion }) => {
+const SummaryPage = ({ sessionId, finishedLoading, activateQuestion, subscribeChanges }) => {
   const [questions, setQuestions] = useState([]);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
   useEffect(finishedLoading ,[finishedLoading]);
   useEffect(() => {
-    db.changes({
-      live: true,
-      include_docs: true,
-      doc_ids: [sessionId]
-    }).on('change', ({doc}) => setQuestions(doc.questions));
+    subscribeChanges(sessionId, 
+      ({doc}) => {
+        setQuestions(doc.questions)
+      })
   } ,[]);
 
   const setActive = (index) => {
-    activateQuestion(index)
+    activateQuestion(sessionId, index)
     setActiveQuestionIndex(index)
   }
   

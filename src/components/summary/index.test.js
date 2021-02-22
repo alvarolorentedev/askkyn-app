@@ -5,13 +5,11 @@ import { mount } from 'enzyme'
 describe('Answers page', () => {
 
     const finishedLoadingMock = jest.fn();
+    const subscribeChangesMock = jest.fn();
     
     it('Has correct messages and called finish loading', async () => {
       const finishedLoadingMock = jest.fn();
-      const dbMock = {
-        changes: jest.fn().mockReturnValue({on: jest.fn().mockReturnThis()})
-      };
-      const wrapper = mount(<Summary finishedLoading={finishedLoadingMock} db={dbMock}/>)
+      const wrapper = mount(<Summary finishedLoading={finishedLoadingMock} subscribeChanges={subscribeChangesMock}/>)
       expect(finishedLoadingMock).toHaveBeenCalled()
     })
 })
