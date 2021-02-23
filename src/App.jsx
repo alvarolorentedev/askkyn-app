@@ -58,6 +58,7 @@ const App = () => {
     </Navbar>
    <Router>
      <PublicRoute default path="default" Component={Start} create={createQuestionnaire} join={joinQuestionnaire} />
+     <PublicRoute path="session/:sessionId" Component={Start} join={joinQuestionnaire} create={createQuestionnaire} />
      <PublicRoute path="session/:sessionId/questionnaire" Component={Questionnaire} db={db} submit={submitQuestionnaire} />
      <PublicRoute path="session/:sessionId/summary" Component={Summary} db={db} activateQuestion={activateQuestion} subscribeChanges={subscribeQuestionnaire} />
      <PublicRoute path="session/:sessionId/answers/:username" Component={Answers} db={db} answerQuestion={answerQuestion} subscribeChanges={subscribeQuestionnaire} />

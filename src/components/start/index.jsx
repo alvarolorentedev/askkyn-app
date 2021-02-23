@@ -3,11 +3,14 @@ import { useEffect, useState } from "react"
 import "./index.scss"
 import { Button, Form } from "react-bootstrap"
 
-const StartPage = ({ navigate, finishedLoading, create, join }) => {
+const StartPage = ({ navigate, sessionId, finishedLoading, create, join }) => {
   const [name, setName] = useState("");
   const [identifier, setIdentifier] = useState("");
   useEffect(finishedLoading ,[finishedLoading]);
-
+  useEffect(() => {
+    if(sessionId)
+      setIdentifier(sessionId)
+  } ,[]);
   const onCreate = async () => {
       const result = await create()
       if (result.success)
@@ -20,9 +23,9 @@ const StartPage = ({ navigate, finishedLoading, create, join }) => {
         navigate(`/session/${identifier}/answers/${name}`)
   }
   return (<div id="container">
-    <Button className="btn-start" onClick={onCreate}> Create New</Button>
+    {!sessionId && <Button className="btn-start" onClick={onCreate}> Create New</Button>}
     <Form.Control className="form-control-start" type="text" placeholder="Enter Name" value={ name } onChange={(event) => setName(event.target.value)} />
-    <Form.Control className="form-control-start" type="text" placeholder="Enter Identifier" value={ identifier } onChange={(event) => setIdentifier(event.target.value)} />
+    <Form.Control className="form-control-start" type="text" placeholder="Enter Identifier" value={ identifier } onChange={(event) => setIdentifier(event.target.value)} disabled={sessionId} />
     <Button className="btn-start" onClick={onJoin}> Join </Button>
   </div>)
 }
