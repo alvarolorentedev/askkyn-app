@@ -1,6 +1,7 @@
 {
-  "name": "togglee-generator",
+  "name": "askkyn-app",
   "version": "0.0.1",
+  "homepage": "https://www.askkyn.com",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.34",
     "@fortawesome/free-brands-svg-icons": "^5.15.2",
@@ -19,6 +20,7 @@
     "complexity-report": "2.0.0-alpha",
     "enzyme": "3.11.0",
     "faker": "^5.4.0",
+    "gh-pages": "^3.1.0",
     "jest-enzyme": "7.1.2",
     "node-sass": "5.0.0",
     "pouchdb": "^7.2.2",
@@ -33,7 +35,7 @@
   },
   "scripts": {
     "start": "SKIP_PREFLIGHT_CHECK=true react-scripts start",
-    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build && rm -rf docs && mv build docs && echo www.askkyn.com >> docs/CNAME",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build && rm -rf docs && mv build docs",
     "test": "SKIP_PREFLIGHT_CHECK=true react-scripts test",
     "storybook": "start-storybook -p 6006 -c .storybook",
     "eject": "SKIP_PREFLIGHT_CHECK=true react-scripts eject",
