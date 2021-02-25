@@ -13,6 +13,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 import { far } from "@fortawesome/free-regular-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
 import { createQuestionnaire, joinQuestionnaire, submitQuestionnaire, activateQuestion, answerQuestion, subscribeQuestionnaire, db } from './service'
+import logo from './logo.webp'
 
 library.add(fab, far, fas)
 
@@ -49,7 +50,7 @@ const App = () => {
       <Navbar.Brand href="/">
         <img
           alt=""
-          src="./logo.webp"
+          src={logo}
           width="42"
           height="42"
           className="d-inline-block align-top"
