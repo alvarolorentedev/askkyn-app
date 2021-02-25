@@ -1,5 +1,11 @@
 @import "../../App.scss";
 
+
 .answer-card {
     margin: 10px;
+}
+
+.answer-card-selected {
+    margin: 10px;
+    background-color: rgb(56, 218, 142)!important;
 }

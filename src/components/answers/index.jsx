@@ -6,6 +6,7 @@ import { Card } from "react-bootstrap"
 const AnswersPage = ({ sessionId, username, finishedLoading, answerQuestion, subscribeChanges }) => {
   useEffect(finishedLoading ,[finishedLoading]);
   const [questions, setQuestions] = useState([]);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(null);
   useEffect(finishedLoading ,[finishedLoading]);
   useEffect(() => {
@@ -20,7 +21,10 @@ const AnswersPage = ({ sessionId, username, finishedLoading, answerQuestion, sub
         <h1>{questions[activeQuestionIndex].question}</h1>
         {
           questions[activeQuestionIndex].answers.map((answer, index) =>(
-            <Card className="answer-card" onClick={() => answerQuestion(sessionId, username, activeQuestionIndex, index)}>
+            <Card key={`answer_${index}`} className={index === selectedAnswer ? 'answer-card-selected' : 'answer-card' } onClick={() => {
+              setSelectedAnswer(index)
+              answerQuestion(sessionId, username, activeQuestionIndex, index)
+            }}>
               <Card.Body>
                 <Card.Title>#{index}</Card.Title>
                 <Card.Text>{answer.value}</Card.Text>
