@@ -10,7 +10,7 @@ const StartPage = ({ navigate, sessionId, finishedLoading, create, join }) => {
   useEffect(() => {
     if(sessionId)
       setIdentifier(sessionId)
-  } ,[]);
+  },[sessionId]);
   const onCreate = async () => {
       const result = await create()
       if (result.success)

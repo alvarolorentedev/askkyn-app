@@ -15,7 +15,7 @@ const AnswersPage = ({ sessionId, username, finishedLoading, answerQuestion, sub
         setQuestions(doc.questions)
         setActiveQuestionIndex(doc.active)
       })
-  } ,[]);
+  } ,);
   return activeQuestionIndex != null
     ? (<>
         <h1>{questions[activeQuestionIndex].question}</h1>

@@ -16,7 +16,7 @@ const SummaryPage = ({ sessionId, finishedLoading, activateQuestion, subscribeCh
       ({doc}) => {
         setQuestions(doc.questions)
       })
-  } ,[]);
+  });
 
   const setActive = (index) => {
     activateQuestion(sessionId, index)

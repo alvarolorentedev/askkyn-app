@@ -5,7 +5,7 @@ export const create = async (db, idGenerator=idGeneratorFunction, timestampGener
     const _id = idGenerator()
     var createdOn = timestampGenerator()
     try {
-        const result = await db.put({_id, createdOn, players: [], questions: []})
+        await db.put({_id, createdOn, players: [], questions: []})
         return({
             success: true,
             identifier: _id
