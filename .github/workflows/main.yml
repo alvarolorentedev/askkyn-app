@@ -19,4 +19,4 @@ jobs:
     # - name: Test
     #   run: npm test
     - name: Deploy
-      run: npm run deploy
+      run: npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
